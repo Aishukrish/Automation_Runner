@@ -14,7 +14,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -22,13 +21,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import io.netty.util.Timeout;
 
 public class Base_Class {
 	public static WebDriver driver; //---->Null
@@ -204,10 +197,10 @@ public class Base_Class {
 	public static void implicit_Wait(int seconds,TimeUnit format) {
 		driver.manage().timeouts().implicitlyWait(seconds, format);
 	}
-	public static void explicit_Wait(int seconds,WebElement element) {
-		WebDriverWait w= new WebDriverWait(driver, seconds);
-		w.until(ExpectedConditions.visibilityOf(element));
-	}
+	//public static void explicit_Wait(int seconds,WebElement element) {
+		//WebDriverWait w= new WebDriverWait(driver, seconds);
+		//w.until(ExpectedConditions.visibilityOf(element));
+	//}
 	/*public static void fluent_wait(int timeoutseconds,int polling, Timeout format) {
 		Wait w1= new FluentWait(driver).withTimeout(30,format).pollingEvery(10,format).ignoring(Exception.class);
 	}*/

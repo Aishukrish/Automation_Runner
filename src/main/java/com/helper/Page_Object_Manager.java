@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 
 import com.pom.Dress_page;
 import com.pom.Home_page1;
+import com.pom.Select_Category;
+import com.pom.Sign_Out;
+import com.pom.Tshirt_purchase;
 import com.pom.login_page;
 import com.pom.payment_page;
 import com.pom.proceed1_page;
@@ -24,6 +27,9 @@ public class Page_Object_Manager
 	private proceed3_page pg3;
 	private payment_page pp;
 	private submit_page sp;
+	private Sign_Out so;
+	private Select_Category sc;
+	private Tshirt_purchase ts;
 	
 
 	public Page_Object_Manager(WebDriver driver2)
@@ -110,6 +116,33 @@ public class Page_Object_Manager
 		
 		return sp;
 	}
+	public Sign_Out get_instance_So() 
+	{
+		if(so==null)
+		{
+			so=new Sign_Out(driver);
+		}
+		
+		return so;
+	}
+	public Select_Category get_instance_Sc() 
+	{
+		if(sc==null)
+		{
+			sc=new Select_Category(driver);
+		}
+		
+		return sc;
+	}
+	
+	public Tshirt_purchase get_instance_ts() {
+		if(ts==null)
+		{
+			ts=new Tshirt_purchase(driver);
+		}
+		return ts;
+	}
+	
 		
 
 }

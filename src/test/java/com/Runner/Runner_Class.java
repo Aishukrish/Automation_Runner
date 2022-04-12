@@ -3,6 +3,8 @@ package com.Runner;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
+
+import com.Configuration.helper.File_Reader_Manager;
 import com.base.Base_Class;
 import com.helper.Page_object_Manager_Adactin;
 
@@ -13,12 +15,13 @@ public class Runner_Class extends Base_Class{
 	
 	public static void main(String[] args) throws Throwable {
 		PropertyConfigurator.configure("log4j.properties");
-		getUrl("https://adactin.com/HotelApp/index.php");
+		String url=File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_Url();
+		getUrl(url);
 		Log.info("Adactin Page Launch");
-		
+
 		//home_page
-		inputValueElement(pom1.get_instance_Hp().getUsername(), particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 1, 5));
-		inputValueElement(pom1.get_instance_Hp().getPassword(), particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 2, 5));
+		inputValueElement(pom1.get_instance_Hp().getUsername(), File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_username());
+		inputValueElement(pom1.get_instance_Hp().getPassword(),File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_Password());
 		clickOnElement(pom1.get_instance_Hp().getLogin_btn());
 		Log.info("Sign_in Successfully");
 		
@@ -38,22 +41,21 @@ public class Runner_Class extends Base_Class{
 		clickOnElement(pom1.get_instance_Hs1().getCon());
 		Log.info("Hotel Selected");
 		
+		
 		//booking details
-		inputValueElement(pom1.get_instance_Bp().getFname(), particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 15, 5));
-		inputValueElement(pom1.get_instance_Bp().getLname(), particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 16, 5));
-	    inputValueElement(pom1.get_instance_Bp().getAddress(),particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 17, 5));	
-	    inputValueElement(pom1.get_instance_Bp().getCard(),particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 18, 5));
+		inputValueElement(pom1.get_instance_Bp().getFname(), File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_firstname());
+		inputValueElement(pom1.get_instance_Bp().getLname(), File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_lastname());
+	    inputValueElement(pom1.get_instance_Bp().getAddress(),File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_address());	
+	    inputValueElement(pom1.get_instance_Bp().getCard(),File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_ccnum());
 	    dropdown("byText", pom1.get_instance_Bp().getType(), "Master Card");
 	    dropdown("byIndex", pom1.get_instance_Bp().getExpiry(), "10");
 	    dropdown("byValue",pom1.get_instance_Bp().getYear(), "2022");
-	    inputValueElement(pom1.get_instance_Bp().getCvv(), particular_Cell_data("C:\\Users\\Manjupriya pc\\eclipse-workspace\\Maven_Demo\\Test_cases\\Adacin Test Case1.xlsx", 22, 5));
+	    inputValueElement(pom1.get_instance_Bp().getCvv(), File_Reader_Manager.get_Instance_frm().get_Instance_CR().get_Config_cvv());
 	    clickOnElement(pom1.get_instance_Bp().getBook());
 	    Log.info("Hotel Booked");
-	    close();
-	  
-		
-
-			  
+	    clickOnElement(pom1.get_instance_lo().getLogout());
+	    Log.info("Log Out Successfully");
+	    			  
 	}
 	
 
